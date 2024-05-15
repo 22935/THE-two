@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum,scale=1,maximum-scale=1,user-scalable=no" />
+		<title>社保计算器_web版_王嗣昆</title>
+		<!-- 以下 3 句话是 Bootstrap 技术必须导入的，这里使用了 CDN，因此电脑必须联网，否则没有效
+果！！！ -->
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script>
+			function calc() {
+				sal = $("#salary").val(); // 取得工资文本框里用户输入的值
+				salnum = parseInt(sal); // 把用户输入的值转换成数字，方可用于数学计算
+
+				// 计算养老保险
+				ylgr = salnum * 0.08; // 个人缴纳的养老保险金额
+				ylgs = salnum * 0.2; // 公司缴纳的养老保险金额
+				$("#ylgr").text(ylgr); // 把计算结果放到表格的单元格里
+				$("#ylgs").text(ylgs); // 把计算结果放到表格的单元格里
+
+				// 计算医疗保险
+				ybgr = salnum * 0.02;
+				ybgs = salnum * 0.06;
+				$("#ybgr").text(ybgr);
+				$("#ybgs").text(ybgs);
+				// 计算失业保险
+				sygr = salnum * 0.005;
+				sygs = salnum * 0.015;
+				$("#sygr").text(sygr);
+				$("#sygs").text(sygs);
+
+
+				// 计算工伤保险
+				gs = salnum * 0.005;
+
+				$("#gs").text(gs);
+				// 计算生育保险
+				sy = salnum * 0.008;
+				$("#sy").text(sy);
+
+				// 计算公积金
+				gjjgr = salnum * 0.12;
+				gjjgs = salnum * 0.12
+				$("#gjjgr").text(gjjgr);
+				$("#gjjgs").text(gjjgs);
+
+				// 个人合计
+				grhj = ylgr + ybgr + sygr + gjjgr;
+				$("#grhj").text(grhj);
+				// 公司合计
+				gshj = ylgs + ybgs + sygs + gs + sy + gjjgs;
+				$("#gshj").text(gshj);
+
+				// 总额
+				$("#total").text(salnum + gshj);
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="container text-center">
+			<h2>社保计算软件-Web 版-王嗣昆</h2>
+			<table class="table table-bordered text-center">
+				<tr>
+					<td>工资</td>
+					<td colspan="3">
+						<input type="text" id="salary" class="form-control" placeholder="请输入个人工资">
+					</td>
+					<td>
+						<button class="btn btn-danger btn-block" onclick="calc()">计算</button>
+					</td>
+				</tr>
+				<tr class="bg-primary">
+					<td>险种</td>
+					<td>个人%</td>
+					<td>个人</td>
+					<td>公司%</td>
+					<td>公司</td>
+				</tr>
+				<tr>
+					<td>养老</td>
+
+					<td>8%</td>
+					<td id="ylgr"></td>
+					<td>20%</td>
+					<td id="ylgs"></td>
+				</tr>
+				<tr>
+					<td>医疗</td>
+					<td>2%</td>
+					<td id="ybgr"></td>
+					<td>6%</td>
+					<td id="ybgs"></td>
+				</tr>
+				<tr>
+					<td>失业</td>
+					<td>0.5%</td>
+					<td id="sygr"></td>
+					<td>1.5%</td>
+					<td id="sygs"></td>
+				</tr>
+				<tr>
+					<td>工伤</td>
+					<td></td>
+					<td></td>
+					<td>0.5%</td>
+					<td id="gs"></td>
+				</tr>
+				<tr>
+					<td>生育</td>
+					<td></td>
+					<td></td>
+					<td>0.8%</td>
+					<td id="sy"></td>
+				</tr>
+				<tr>
+					<td>公积金</td>
+					<td>12%</td>
+					<td id="gjjgr"></td>
+					<td>12%</td>
+					<td id="gjjgs"></td>
+				</tr>
+				<tr>
+					<td>合计</td>
+					<td>个人合计</td>
+					<td id="grhj"></td>
+					<td>公司合计</td>
+
+					<td id="gshj"></td>
+				</tr>
+				<tr>
+					<td>总额</td>
+					<td colspan="4" id="total"></td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="text-center">
+			开发者：情忆楠楠而眠
+		</div>
+
+	</body>
+
+</html><script>window.Dcloud_Html_preview_filename = "c%3A%5Cusers%5C22935%5Cdocuments%5Chbuilderprojects%5Cnuc.kn%5Cindex.html"</script><script>document.write('<script src="//' + (location.host || 'localhost').split(':')[0] + ':35929/livereload.js?snipver=1"></' + 'script>')</script>
+	<script>
+	class reloadPlugin {
+		reload(path, options){
+			return decodeURIComponent(Dcloud_Html_preview_filename) !== path;
+		}
+	}
+	if (LiveReload){
+		LiveReload.addPlugin(reloadPlugin)
+	}
+
+	</script>
+	
